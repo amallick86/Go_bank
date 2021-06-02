@@ -28,10 +28,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    -name: Golang migrate
+    -name: Install golang-migrate
      run: |
         curl -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz | tar xvz
-        sudo mv migrate.linux-amd64.tar.gz /usr/bin/
+        sudo mv migrate.linux-amd64 /usr/bin/migrate
         which migrate
 
     -name: Run migrations
