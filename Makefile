@@ -7,9 +7,9 @@ createdb:
 dropdb:
 	sudo docker exec -it banking dropdb bank
 migrateup:
-	migrate -path db/migration -database "postgres://root:root123@localhost:5432/bank?sslmode=disable" -verbose up
+	migrate -path db/migration -database "postgresql://root:root123@localhost:5432/bank?sslmode=disable" -verbose up
 migratedown:
-	migrate -path db/migration -database "postgres://root:root123@localhost:5432/bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "postgresql://root:root123@localhost:5432/bank?sslmode=disable" -verbose down
 sqlcinit:
 	sqlc init
 sqlc:
