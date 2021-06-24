@@ -6,9 +6,10 @@ import (
 	"strings"
 	"time"
 )
+
 const alphabate = "abcdefghijklmnopqrstuvwxyz"
 
-func init(){
+func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
@@ -18,40 +19,43 @@ func RandomInt(min, max int64) int64 {
 }
 
 //RandomString generates a random string of length n
-func RandomString(n int) string{
+func RandomString(n int) string {
 	var sb strings.Builder
 	k := len(alphabate)
-	for i:=0; i<n ; i++ {
-		c:= alphabate[rand.Intn(k)]
+	for i := 0; i < n; i++ {
+		c := alphabate[rand.Intn(k)]
 		sb.WriteByte(c)
 	}
 	return sb.String()
 }
+
 //RandomOwner generates a random qwner name
 func RandomOwner() string {
 	return RandomString(6)
 }
+
 //RandomCitizenship generates a random citizinship id
 func RandomCitizenship() string {
-	first:= strconv.Itoa(int(RandomInt(0,99)))
-	second:= strconv.Itoa(int(RandomInt(0,99)))
-	third:= strconv.Itoa(int(RandomInt(0,99)))
-	final := first + "-" + second + "-" + third 
+	first := strconv.Itoa(int(RandomInt(0, 99)))
+	second := strconv.Itoa(int(RandomInt(0, 99)))
+	third := strconv.Itoa(int(RandomInt(0, 99)))
+	final := first + "-" + second + "-" + third
 	return final
 }
+
 //RandomMoney generates a random amount of money
 func RandomMoney() int64 {
-	return RandomInt(0,1000)
+	return RandomInt(0, 1000)
 }
 
 //RandomCurrency generates a random currency code
 func RandomCurrency() string {
-	currencies:=[]string{"EUR","USD","CAD"}
+	currencies := []string{EUR, USD, CAD, NP}
 	n := len(currencies)
 	return currencies[rand.Intn(n)]
 }
 
 //RandomAccountno generates a random account number
 func RandomAccountno() int64 {
-	return RandomInt(123456789,987456123987)
+	return RandomInt(123456789, 987456123987)
 }

@@ -2,4 +2,4 @@ DROP TABLE IF EXISTS entries;
 DROP TABLE IF EXISTS transfers;
 DROP TABLE IF EXISTS accounts;
 
-DROP  TABLE  IF EXISTS schema_migrations;
+-- DROP  TABLE  IF EXISTS schema_migrations;

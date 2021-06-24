@@ -16,4 +16,9 @@ sqlc:
 	sqlc generate	
 test:
 	go test -v -cover ./...
-.PHONY: dockerpostgresimages createcontainer createdb dropdb migrateup migratedown sqlcinit sqlc test
+server:
+	go run main.go
+mockgen:
+	mockgen -package mockdb -destination db/mock/store.go github.com/amallick86/Go_bank/db/sqlc Store
+
+.PHONY: dockerpostgresimages createcontainer createdb dropdb migrateup migratedown sqlcinit sqlc test server mockgen
