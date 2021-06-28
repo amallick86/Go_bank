@@ -7,12 +7,12 @@ import (
 )
 
 type Account struct {
-	ID            int64     `json:"id"`
-	Owner         string    `json:"owner"`
-	Ctitizianship string    `json:"ctitizianship"`
-	Balance       int64     `json:"balance"`
-	Currency      string    `json:"currency"`
-	CreatedAt     time.Time `json:"createdAt"`
+	ID          int64     `json:"id"`
+	Owner       string    `json:"owner"`
+	Citizenship string    `json:"citizenship"`
+	Balance     int64     `json:"balance"`
+	Currency    string    `json:"currency"`
+	CreatedAt   time.Time `json:"createdAt"`
 }
 
 type Entry struct {
@@ -37,7 +37,7 @@ type User struct {
 	HashedPassword    string    `json:"hashedPassword"`
 	FullName          string    `json:"fullName"`
 	Email             string    `json:"email"`
-	Ctitizianship     string    `json:"ctitizianship"`
+	Citizenship       string    `json:"citizenship"`
 	PasswordChangedAt time.Time `json:"passwordChangedAt"`
 	CreatedAt         time.Time `json:"createdAt"`
 }

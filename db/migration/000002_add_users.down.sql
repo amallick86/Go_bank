@@ -2,6 +2,6 @@ ALTER TABLE IF EXISTS "accounts" DROP CONSTRAINT IF EXISTS  "citizen_currency_ke
 
 ALTER TABLE IF EXISTS "accounts" DROP CONSTRAINT IF EXISTS  "accounts_owner_fkey";
 
-ALTER TABLE IF EXISTS "accounts" DROP CONSTRAINT IF EXISTS  "accounts_ctitizianship_fkey";
+ALTER TABLE IF EXISTS "accounts" DROP CONSTRAINT IF EXISTS  "accounts_citizenship_fkey";
 
 DROP  TABLE IF EXISTS "users";

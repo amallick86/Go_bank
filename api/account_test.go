@@ -111,7 +111,7 @@ func randomAccount() db.Account {
 		Owner:         util.RandomOwner(),
 		Balance:       util.RandomMoney(),
 		Currency:      util.RandomCurrency(),
-		Ctitizianship: util.RandomCitizenship(),
+		Citizenship: util.RandomCitizenship(),
 	}
 }
 

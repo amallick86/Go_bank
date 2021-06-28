@@ -1,7 +1,7 @@
 CREATE TABLE "accounts" (
   "id" bigserial PRIMARY KEY,
   "owner" varchar NOT NULL,
-  "ctitizianship" varchar UNIQUE NOT NULL,
+  "citizenship" varchar UNIQUE NOT NULL,
   "balance" bigint NOT NULL,
   "currency" varchar NOT NULL,
   "created_at" timestamp NOT NULL DEFAULT 'now()'
@@ -30,7 +30,7 @@ ALTER TABLE "transfers" ADD FOREIGN KEY ("to_account_id") REFERENCES "accounts" 
 
 CREATE INDEX ON "accounts" ("owner");
 
-CREATE INDEX ON "accounts" ("ctitizianship");
+CREATE INDEX ON "accounts" ("citizenship");
 
 CREATE INDEX ON "transfers" ("from_account_id");
 

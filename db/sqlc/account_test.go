@@ -16,7 +16,7 @@ func createRandomAccount (t *testing.T) Account{
 		Owner: user.Username,
 		Balance: util.RandomMoney(),
 		Currency: util.RandomCurrency(),
-		Ctitizianship: user.Ctitizianship,
+		Citizenship: user.Citizenship,
 	}
 
 	account, err := testQueries.CreateAccount(context.Background(), arg)
@@ -26,7 +26,7 @@ func createRandomAccount (t *testing.T) Account{
 	require.Equal(t, arg.Owner, account.Owner)
 	require.Equal(t, arg.Balance, account.Balance)
 	require.Equal(t, arg.Currency, account.Currency)
-	require.Equal(t, arg.Ctitizianship, account.Ctitizianship)
+	require.Equal(t, arg.Citizenship, account.Citizenship)
 
 	require.NotZero(t, account.ID)
 	require.NotZero(t, account.CreatedAt)
@@ -45,7 +45,7 @@ func  TestGetAccount(t *testing.T)  {
 	require.Equal(t, account1.Owner, account2.Owner)
 	require.Equal(t, account1.Balance, account2.Balance)
 	require.Equal(t, account1.Currency, account2.Currency)
-	require.Equal(t, account1.Ctitizianship, account2.Ctitizianship)
+	require.Equal(t, account1.Citizenship, account2.Citizenship)
 	require.WithinDuration(t, account1.CreatedAt, account2.CreatedAt, time.Second)
 }
 
@@ -64,7 +64,7 @@ func TestUpdateAccount(t *testing.T) {
 	require.Equal(t, account1.Owner, account2.Owner)
 	require.Equal(t, arg.Balance, account2.Balance)
 	require.Equal(t, account1.Currency, account2.Currency)
-	require.Equal(t, account1.Ctitizianship, account2.Ctitizianship)
+	require.Equal(t, account1.Citizenship, account2.Citizenship)
 	require.WithinDuration(t, account1.CreatedAt, account2.CreatedAt, time.Second)
 }
 

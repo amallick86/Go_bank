@@ -4,7 +4,7 @@ INSERT INTO users (
   hashed_password,
   full_name,
   email,
-  ctitizianship
+  citizenship
 ) VALUES (
   $1, $2, $3, $4, $5
 ) RETURNING *;

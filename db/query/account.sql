@@ -3,7 +3,7 @@ INSERT INTO accounts (
   owner,
   balance,
   currency,
-  ctitizianship
+  citizenship
 ) VALUES (
   $1, $2, $3, $4
 )

@@ -12,7 +12,7 @@ import (
 type createAccountRequest struct {
 	Owner         string `json:"owner" binding:"required"`
 	Currency      string `json:"currency" binding:"required,currency"`
-	Ctitizianship string `json:"ctitizianship" binding:"required"`
+	Citizenship string `json:"citizenship" binding:"required"`
 }
 
 func (server *Server) createAccount(ctx *gin.Context) {
@@ -24,7 +24,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 	arg := db.CreateAccountParams{
 		Owner:         req.Owner,
 		Currency:      req.Currency,
-		Ctitizianship: req.Ctitizianship,
+		Citizenship: req.Citizenship,
 		Balance:       0,
 	}
 

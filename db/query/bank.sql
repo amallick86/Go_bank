@@ -3,7 +3,7 @@ CREATE TABLE "users" (
   "hashed_password" varchar NOT NULL,
   "full_name" varchar NOT NULL,
   "email" varchar UNIQUE NOT NULL,
-  "ctitizianship" varchar UNIQUE NOT NULL,
+  "citizenship" varchar UNIQUE NOT NULL,
   "password_changed_at" timestamp NOT NULL DEFAULT '0001-01-01 00:00:00+00',
   "created_at" timestamp NOT NULL DEFAULT 'now()'
 );
@@ -11,7 +11,7 @@ CREATE TABLE "users" (
 CREATE TABLE "accounts" (
   "id" bigserial PRIMARY KEY,
   "owner" varchar NOT NULL,
-  "ctitizianship" varchar UNIQUE NOT NULL,
+  "citizenship" varchar UNIQUE NOT NULL,
   "balance" bigint NOT NULL,
   "currency" varchar NOT NULL,
   "created_at" timestamp NOT NULL DEFAULT 'now()'
@@ -20,7 +20,7 @@ CREATE TABLE "accounts" (
 CREATE TABLE "entries" (
   "id" bigserial PRIMARY KEY,
   "account_id" bigint NOT NULL,
-  "ctitizianship" varchar NOT NULL,
+  "citizenship" varchar NOT NULL,
   "amount" bigint NOT NULL,
   "created_at" timestamp NOT NULL DEFAULT 'now()'
 );
@@ -35,11 +35,11 @@ CREATE TABLE "transfers" (
 
 ALTER TABLE "accounts" ADD FOREIGN KEY ("owner") REFERENCES "users" ("username");
 
-ALTER TABLE "accounts" ADD FOREIGN KEY ("ctitizianship") REFERENCES "users" ("ctitizianship");
+ALTER TABLE "accounts" ADD FOREIGN KEY ("citizenship") REFERENCES "users" ("citizenship");
 
 ALTER TABLE "entries" ADD FOREIGN KEY ("account_id") REFERENCES "accounts" ("id");
 
-ALTER TABLE "entries" ADD FOREIGN KEY ("ctitizianship") REFERENCES "accounts" ("ctitizianship");
+ALTER TABLE "entries" ADD FOREIGN KEY ("citizenship") REFERENCES "accounts" ("citizenship");
 
 ALTER TABLE "transfers" ADD FOREIGN KEY ("from_account_id") REFERENCES "accounts" ("id");
 
@@ -47,9 +47,9 @@ ALTER TABLE "transfers" ADD FOREIGN KEY ("to_account_id") REFERENCES "accounts" 
 
 CREATE INDEX ON "accounts" ("owner");
 
-CREATE INDEX ON "accounts" ("ctitizianship");
+CREATE INDEX ON "accounts" ("citizenship");
 
-CREATE UNIQUE INDEX ON "accounts" ("ctitizianship", "currency");
+CREATE UNIQUE INDEX ON "accounts" ("citizenship", "currency");
 
 CREATE INDEX ON "transfers" ("from_account_id");
 

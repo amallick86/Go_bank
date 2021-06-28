@@ -13,10 +13,10 @@ INSERT INTO users (
   hashed_password,
   full_name,
   email,
-  ctitizianship
+  citizenship
 ) VALUES (
   $1, $2, $3, $4, $5
-) RETURNING username, hashed_password, full_name, email, ctitizianship, password_changed_at, created_at
+) RETURNING username, hashed_password, full_name, email, citizenship, password_changed_at, created_at
 `
 
 type CreateUserParams struct {
@@ -24,7 +24,7 @@ type CreateUserParams struct {
 	HashedPassword string `json:"hashedPassword"`
 	FullName       string `json:"fullName"`
 	Email          string `json:"email"`
-	Ctitizianship  string `json:"ctitizianship"`
+	Citizenship    string `json:"citizenship"`
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, error) {
@@ -33,7 +33,7 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, e
 		arg.HashedPassword,
 		arg.FullName,
 		arg.Email,
-		arg.Ctitizianship,
+		arg.Citizenship,
 	)
 	var i User
 	err := row.Scan(
@@ -41,7 +41,7 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, e
 		&i.HashedPassword,
 		&i.FullName,
 		&i.Email,
-		&i.Ctitizianship,
+		&i.Citizenship,
 		&i.PasswordChangedAt,
 		&i.CreatedAt,
 	)
@@ -49,7 +49,7 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, e
 }
 
 const getUser = `-- name: GetUser :one
-SELECT username, hashed_password, full_name, email, ctitizianship, password_changed_at, created_at FROM users
+SELECT username, hashed_password, full_name, email, citizenship, password_changed_at, created_at FROM users
 WHERE username = $1 LIMIT 1
 `
 
@@ -61,7 +61,7 @@ func (q *Queries) GetUser(ctx context.Context, username string) (User, error) {
 		&i.HashedPassword,
 		&i.FullName,
 		&i.Email,
-		&i.Ctitizianship,
+		&i.Citizenship,
 		&i.PasswordChangedAt,
 		&i.CreatedAt,
 	)

@@ -17,7 +17,7 @@ func createRandomUser (t *testing.T) User{
 		HashedPassword: hashedPassword,
 		FullName: util.RandomOwner(),
 		Email: util.RandomEmail(),
-		Ctitizianship: util.RandomCitizenship(),
+		Citizenship: util.RandomCitizenship(),
 	}
 
 	user, err := testQueries.CreateUser(context.Background(), arg)
@@ -28,7 +28,7 @@ func createRandomUser (t *testing.T) User{
 	require.Equal(t, arg.HashedPassword, user.HashedPassword)
 	require.Equal(t, arg.FullName, user.FullName)
 	require.Equal(t, arg.Email, user.Email)
-	require.Equal(t, arg.Ctitizianship, user.Ctitizianship)
+	require.Equal(t, arg.Citizenship, user.Citizenship)
 
 	require.True(t, user.PasswordChangedAt.IsZero())
 	require.NotZero(t, user.CreatedAt)
@@ -47,7 +47,7 @@ func  TestGetUser(t *testing.T)  {
 	require.Equal(t, user1.HashedPassword, user2.HashedPassword)
 	require.Equal(t, user1.FullName, user2.FullName)
 	require.Equal(t, user1.Email,user2.Email)
-	require.Equal(t, user1.Ctitizianship, user2.Ctitizianship)
+	require.Equal(t, user1.Citizenship, user2.Citizenship)
 	require.WithinDuration(t, user1.PasswordChangedAt, user2.PasswordChangedAt,time.Second)
 	require.WithinDuration(t, user1.CreatedAt, user2.CreatedAt,time.Second)
 }

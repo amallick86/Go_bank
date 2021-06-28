@@ -15,13 +15,13 @@ type createUserRequest struct{
 	Password string `json:"password" binding:"required,min=6"`
 	FullName string `json:"fullname" binding:"required"`
 	Email string `json:"email" binding:"required,email"`
-	Ctitizianship string `json:"ctitizianship" binding:"required"`
+	Citizenship string `json:"citizenship" binding:"required"`
 }
 type cretedUserResponse struct{
 	Username          string    `json:"username"`
 	FullName          string    `json:"fullName"`
 	Email             string    `json:"email"`
-	Ctitizianship     string    `json:"ctitizianship"`
+	Citizenship     string    `json:"citizenship"`
 	PasswordChangedAt time.Time `json:"passwordChangedAt"`
 	CreatedAt         time.Time `json:"createdAt"`
 }
@@ -42,10 +42,10 @@ func (server *Server) createUser(ctx *gin.Context) {
 		HashedPassword:      hashedPassword,
 		FullName: req.FullName,
 		Email:  req.Email,
-		Ctitizianship: req.Ctitizianship,
+		Citizenship: req.Citizenship,
 		
 	}
-
+	
 	user, err := server.store.CreateUser(ctx, arg)
 	if err != nil {
 		if pqErr, ok := err.(*pq.Error); ok {
@@ -63,7 +63,7 @@ func (server *Server) createUser(ctx *gin.Context) {
 		Username: user.Username,
 		FullName: user.FullName,
 		Email:  user.Email,
-		Ctitizianship: user.Ctitizianship,
+		Citizenship: user.Citizenship,
 		PasswordChangedAt: user.PasswordChangedAt,
 		CreatedAt: user.CreatedAt,
 
