@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -58,4 +59,9 @@ func RandomCurrency() string {
 //RandomAccountno generates a random account number
 func RandomAccountno() int64 {
 	return RandomInt(123456789, 987456123987)
+}
+
+//RandomEmail generatesa random email 
+func RandomEmail() string {
+	return fmt.Sprintf("%s@email.com", RandomString(6))
 }

@@ -10,6 +10,7 @@ require (
 	github.com/golang/mock v1.5.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
+	github.com/kyleconroy/sqlc v1.8.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/lib/pq v1.10.2
 	github.com/mattn/go-isatty v0.0.13 // indirect
