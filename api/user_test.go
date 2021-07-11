@@ -19,7 +19,6 @@ import (
 	"github.com/lib/pq"
 	"github.com/stretchr/testify/require"
 )
-
 type eqCreateUserParamsMatcher struct {
 	arg      db.CreateUserParams
 	password string
@@ -158,30 +157,13 @@ func TestCreateUserAPI(t *testing.T) {
 			},
 		},
 		{
-			name: "InvalidCitizenship",
-			body: gin.H{
-				"username":  user.Username,
-				"password":  password,
-				"full_name": user.FullName,
-				"email":     user.Email,
-				"citizenship": "invalid citizenship",
-			},
-			buildStubs: func(store *mockdb.MockStore) {
-				store.EXPECT().
-					CreateUser(gomock.Any(), gomock.Any()).
-					Times(0)
-			},
-			checkResponse: func(recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusBadRequest, recorder.Code)
-			},
-		},
-		{
 			name: "TooShortPassword",
 			body: gin.H{
 				"username":  user.Username,
 				"password":  "123",
 				"full_name": user.FullName,
 				"email":     user.Email,
+				"citizenship": user.Citizenship,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -301,6 +283,7 @@ func TestLoginUserAPI(t *testing.T) {
 				"password":  password,
 				"full_name": user.FullName,
 				"email":     user.Email,
+				"citizenship": user.Citizenship,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
