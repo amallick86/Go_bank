@@ -32,6 +32,14 @@ type Transfer struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+type TransfersPsp struct {
+	ID           int64     `json:"id"`
+	AccountID    int64     `json:"accountID"`
+	PspAccountID int64     `json:"pspAccountID"`
+	Amount       int64     `json:"amount"`
+	CreatedAt    time.Time `json:"createdAt"`
+}
+
 type User struct {
 	Username          string    `json:"username"`
 	HashedPassword    string    `json:"hashedPassword"`

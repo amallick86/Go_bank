@@ -1,7 +1,7 @@
 images:
 	sudo docker pull postgres
 container:
-	sudo docker run --name banking -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root123 -d postgres
+	sudo docker run --name banking -p 5433:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root123 -d postgres
 createdb:
 	sudo docker exec -it banking createdb --username=root --owner=root bank
 dropdb:
